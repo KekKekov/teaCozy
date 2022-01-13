@@ -1,5 +1,5 @@
 html, body {
-    margin: 0;
+    margin: 0;       /* overwrite browser default margins and paddings */
     padding: 0;
     font-family: Helvetica;
     color: seashell;
@@ -10,9 +10,10 @@ html, body {
 }
 
 main, footer {
-    position: relative;
+    position: relative;   /* moving due to fixed header */
     top: 70px;
 }
+
 /* header section */
 header {
     background-color: black;
@@ -21,14 +22,20 @@ header {
     border-bottom: 1px solid seashell;
     position: fixed;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav {
+    width: 100%;
     text-align: right;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: right;
 }
 
 nav p {
-    display: inline;
     margin: 10px;
     text-decoration: underline;
 }
@@ -36,21 +43,20 @@ nav p {
 header img {
     height: 50px;
     margin-left: 10px;
-    float: left;
 }
-
 
 /* top section */
 #top {
     background-image: url(images/img-mission-background.jpg);
-    width: 1200px;
-    height: 700px;
+    max-width: 1200px;
+    min-height: 700px;
     margin: 0 auto;
-    border: 1px solid blue;
     display: flex;
+    background-size: cover;
+    background-position: center;
 }
 
-#text {
+#topText {
     width: 100%;
     margin: auto 0;
     background-color: black;
@@ -58,7 +64,7 @@ header img {
 
 /* middle section */ 
 #middle {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
     display: inline-flex;
     flex-wrap: wrap;
@@ -68,7 +74,6 @@ header img {
 #middle img {
     width: 300px;
     height: 200px;
-    margin: 0%;
 }
 
 .imgAndCaption {
@@ -76,32 +81,49 @@ header img {
 }
 
 .imgAndCaption p {
-    margin: 10 0 0 0;
+    margin-top: 10px;
 }
 
 /* bottom */
 #bottom {
     background-image: url(images/img-locations-background.jpg);
-    height: 500px;
-    width: 1200px;
-    margin: 0 auto;
     background-repeat: no-repeat;
-    background-position: center;
     background-size: cover;
-    border: 1px solid red;
-    
+    background-position: center;   /* !!! image position in design spec is different, need to change it */
+    min-height: 500px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #containerLocations {
-    display: inline-flex; /* !!!! */
-    opacity: 1;
-    align-items: center;
-    border: 3px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0;
+}
+
+#bottom h2 {  /* !!! need to fix 15px space between heading and location container */
+    margin: 0;
 }
 
 .locations {
+    min-width: 300px;
     background-color: black;
-    width: 300px;
-    margin: 0 20px;
+    margin: 20px;
+    opacity: 1;
 }
 
+/* footer */
+#topfooter {
+    min-height: 200px;
+}
+
+#bottomfooter {
+    text-align: left;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
